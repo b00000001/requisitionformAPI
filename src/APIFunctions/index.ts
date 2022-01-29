@@ -17,6 +17,50 @@ class APIFunctions {
     });
     return response;
   }
+  updateField() {
+    let options = {
+      method: 'POST',
+      url: 'https://api.quickbase.com/v1/records/br4tjpx8n',
+      headers: {
+        'QB-Realm-Hostname': 'piedmontplumbers.quickbase.com',
+        'User-Agent': '{User-Agent}',
+        Authorization:
+          'QB-USER-TOKEN b6p4j6_kauq_0_dcvntrphdhmxhcnpsjsxduvu2x6',
+        'Content-Type': 'application/json'
+      }
+    };
+    let body = {
+      to: 'br4vj56h7',
+      data: [
+        {
+          '6': {
+            value: 'Test Location'
+          },
+          '7': {
+            value: 'Test Phase'
+          },
+          '8': {
+            value: 'Test Category'
+          },
+          '9': {
+            value: 'Test Subcategory'
+          },
+          '10': {
+            value: 'Test Item'
+          },
+          '11': {
+            value: 'Test Qty'
+          },
+          '12': {
+            value: 'Additional Item'
+          }
+        }
+      ],
+      fieldsToReturn: [6, 7, 8, 9, 10, 11, 12]
+    };
+    const response = axios.request(options);
+    return response;
+  }
 }
 
 export default APIFunctions;
