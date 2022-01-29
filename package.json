@@ -1,0 +1,25 @@
+{
+  "name": "requisitionformapi",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "postbuild": "cp src/package.json ./dist/package.json && cd ./dist/src && npm i"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/b00000001/requisitionformAPI.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/b00000001/requisitionformAPI/issues"
+  },
+  "homepage": "https://github.com/b00000001/requisitionformAPI#readme",
+  "dependencies": {
+    "dotenv": "^14.3.2",
+    "typescript": "^4.5.5"
+  }
+}
