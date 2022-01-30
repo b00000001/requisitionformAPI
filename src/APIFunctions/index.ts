@@ -9,56 +9,56 @@ class APIFunctions {
       'QB-Realm-Hostname': 'piedmontplumbers.quickbase.com',
       'User-Agent': '{User-Agent}',
       Authorization: `QB-USER-TOKEN ${process.env.QB_USER_TOKEN}`,
-      'Content-Type': 'application/json'
+      'Content-Type': 'application/json',
     };
     const response = axios.get('https://api.quickbase.com/v1/apps/br4tjpx8n', {
       method: 'GET',
-      headers: headers
+      headers: headers,
     });
     return response;
   }
-  updateField() {
-    let options = {
-      method: 'POST',
-      url: 'https://api.quickbase.com/v1/records/br4tjpx8n',
-      headers: {
-        'QB-Realm-Hostname': 'piedmontplumbers.quickbase.com',
-        'User-Agent': '{User-Agent}',
-        Authorization:
-          'QB-USER-TOKEN b6p4j6_kauq_0_dcvntrphdhmxhcnpsjsxduvu2x6',
-        'Content-Type': 'application/json'
-      }
+  async updateField() {
+    const headers = {
+      'QB-Realm-Hostname': 'piedmontplumbers.quickbase.com',
+      'User-Agent': 'Test',
+      Authorization: `QB-USER-TOKEN ${process.env.QB_USER_TOKEN}`,
+      'Content-Type': 'application/json',
     };
     let body = {
       to: 'br4vj56h7',
       data: [
         {
           '6': {
-            value: 'Test Location'
+            value: 'Test Location',
           },
           '7': {
-            value: 'Test Phase'
+            value: 'Test Phase',
           },
           '8': {
-            value: 'Test Category'
+            value: 'Test Category',
           },
           '9': {
-            value: 'Test Subcategory'
+            value: 'Test Subcategory',
           },
           '10': {
-            value: 'Test Item'
+            value: 'Test Item',
           },
           '11': {
-            value: 'Test Qty'
+            value: 'Test Qty',
           },
           '12': {
-            value: 'Additional Item'
-          }
-        }
+            value: 'Added from API',
+          },
+        },
       ],
-      fieldsToReturn: [6, 7, 8, 9, 10, 11, 12]
+      fieldsToReturn: [6, 7, 8, 9, 10, 11, 12],
     };
-    const response = axios.request(options);
+    const response = await axios({
+      method: 'POST',
+      url: 'https://api.quickbase.com/v1/records',
+      headers,
+      data: body,
+    })
     return response;
   }
 }
