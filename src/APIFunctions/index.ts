@@ -3,7 +3,7 @@ import dotenv from 'dotenv';
 dotenv.config();
 interface FormFields {
   to: string;
-  data: {string: { string: string }}[],
+  data: { string: { string: string } }[];
   fieldsToReturn: number[];
 }
 class APIFunctions {
@@ -27,14 +27,18 @@ class APIFunctions {
       'User-Agent': 'Test',
       Authorization: `QB-USER-TOKEN ${process.env.QB_USER_TOKEN}`,
       'Content-Type': 'application/json'
-    };    
-    const response = await axios({
-      method: 'POST',
-      url: 'https://api.quickbase.com/v1/records',
-      headers,
-      data: body
-    });
-    return response;
+    };
+    try {
+      const response = await axios({
+        method: 'POST',
+        url: 'https://api.quickbase.com/v1/records',
+        headers,
+        data: body
+      });
+      return response;
+    } catch (e) {
+      console.log(e);
+    }
   }
 }
 
