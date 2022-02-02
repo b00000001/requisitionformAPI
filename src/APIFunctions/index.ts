@@ -3,7 +3,7 @@ import dotenv from 'dotenv';
 dotenv.config();
 interface FormFields {
   to: string;
-  data: { string: { string: string } }[];
+  data: { [key: string]: string }[];
   fieldsToReturn: number[];
 }
 class APIFunctions {
