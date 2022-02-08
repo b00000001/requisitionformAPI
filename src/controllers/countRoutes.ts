@@ -13,7 +13,7 @@ router.get('/', (req, res) => {
 // Gets records for a table, the "from" field in the body is what determines the table that is selected.
 router.post('/getrecords', async (req, res, next) => {
   try {
-    const response = await APIController.getRecords(req.body);
+    const response = await APIController.getRecords(req.body.form);
     res.status(200).json(response?.data);
   } catch (e) {
     next(e);

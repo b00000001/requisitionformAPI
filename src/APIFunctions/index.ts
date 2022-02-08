@@ -1,6 +1,7 @@
 import axios from 'axios';
 import dotenv from 'dotenv';
 dotenv.config();
+import requestBody from './requestbody';
 interface FormFields {
   to: string;
   data: { [key: string]: string }[];
@@ -35,13 +36,22 @@ class APIFunctions {
     }
   }
 
-  async getRecords(body: FormFields) {
+  // Requires Table ID
+  /*
+  Pass in the table ID with the following format
+  
+  {
+    "form": "br5n5hq8r",
+  } 
+   */
+  async getRecords(form: string) {
+    requestBody.from = form;
     try {
       const response = await axios({
         method: 'POST',
         url: 'https://api.quickbase.com/v1/records/query',
         headers,
-        data: body
+        data: requestBody
       });
       return response;
     } catch (e) {
