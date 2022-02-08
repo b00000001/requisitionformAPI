@@ -10,43 +10,53 @@ router.get('/', (req, res) => {
   });
 });
 
-router.post('/getrecords', async (req, res) => {
+// Gets records for a table, the "from" field in the body is what determines the table that is selected.
+router.post('/getrecords', async (req, res, next) => {
   try {
     const response = await APIController.getRecords(req.body);
-    res.status(200).json(response.data);
+    res.status(200).json(response?.data);
   } catch (e) {
-    console.log(e);
+    next(e);
   }
-})
+});
 
-router.put('/bag', (req, res) => {
+router.post('/bag', (req, res) => {
   const { itemId, newQty } = req.body;
+  APIController.updateBag(itemId, newQty);
   res.json({
-    message: `Item ${itemId} updated to ${newQty}`
+    message: `Bag item ${itemId} updated to ${newQty}`
   });
 });
 
-router.get('/bin', (req, res) => {
+router.post('/bin', (req, res) => {
+  const { itemId, newQty } = req.body;
+  APIController.updateBin(itemId, newQty);
   res.json({
-    message: 'Bin Route'
+    message: `Bin item ${itemId} updated to ${newQty}`
   });
 });
 
-router.get('/box', (req, res) => {
+router.post('/box', (req, res) => {
+  const { itemId, newQty } = req.body;
+  APIController.updateBox(itemId, newQty);
   res.json({
-    message: 'Box Route'
+    message: `Box item ${itemId} updated to ${newQty}`
   });
 });
 
-router.get('/case', (req, res) => {
+router.post('/case', (req, res) => {
+  const { itemId, newQty } = req.body;
+  APIController.updateCase(itemId, newQty);
   res.json({
-    message: 'Case Route'
+    message: `Case item ${itemId} updated to ${newQty}`
   });
 });
 
-router.get('/ea', (req, res) => {
+router.post('/ea', (req, res) => {
+  const { itemId, newQty } = req.body;
+  APIController.updateEA(itemId, newQty);
   res.json({
-    message: 'EA QTY Route'
+    message: `EA item ${itemId} updated to ${newQty}`
   });
 });
 

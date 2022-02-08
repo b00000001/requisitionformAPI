@@ -1,6 +1,7 @@
 import { Router } from 'express';
 import homeRoutes from './homeRoutes';
 import countRoutes from './countRoutes';
+
 const router = Router();
 
 router.use('/', homeRoutes);
