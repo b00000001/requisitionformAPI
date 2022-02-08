@@ -1,12 +1,23 @@
 import { Router } from 'express';
-
+import APIFunctions from '../APIFunctions/index';
 const router = Router();
+
+const APIController = new APIFunctions();
 
 router.get('/', (req, res) => {
   res.json({
     message: 'Count Route'
   });
 });
+
+router.post('/getrecords', async (req, res) => {
+  try {
+    const response = await APIController.getRecords(req.body);
+    res.status(200).json(response.data);
+  } catch (e) {
+    console.log(e);
+  }
+})
 
 router.put('/bag', (req, res) => {
   const { itemId, newQty } = req.body;

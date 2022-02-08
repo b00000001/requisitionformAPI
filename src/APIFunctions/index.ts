@@ -5,16 +5,17 @@ interface FormFields {
   to: string;
   data: { [key: string]: string }[];
   fieldsToReturn: number[];
-}
+};
+
+const headers = {
+  'QB-Realm-Hostname': 'piedmontplumbers.quickbase.com',      
+  Authorization: `QB-USER-TOKEN ${process.env.REQ_COUNT_TOKEN}`,
+  'Content-Type': 'application/json'
+};
+
 class APIFunctions {
   constructor() {}
-  getApp() {
-    let headers = {
-      'QB-Realm-Hostname': 'piedmontplumbers.quickbase.com',
-      'User-Agent': '{User-Agent}',
-      Authorization: `QB-USER-TOKEN ${process.env.QB_USER_TOKEN}`,
-      'Content-Type': 'application/json'
-    };
+  getApp() {    
     const response = axios.get('https://api.quickbase.com/v1/apps/br4tjpx8n', {
       method: 'GET',
       headers: headers
@@ -22,12 +23,6 @@ class APIFunctions {
     return response;
   }
   async updateField(body: FormFields) {
-    const headers = {
-      'QB-Realm-Hostname': 'piedmontplumbers.quickbase.com',
-      'User-Agent': 'Test',
-      Authorization: `QB-USER-TOKEN ${process.env.QB_USER_TOKEN}`,
-      'Content-Type': 'application/json'
-    };
     try {
       const response = await axios({
         method: 'POST',
@@ -39,6 +34,20 @@ class APIFunctions {
     } catch (e) {
       console.log(e);
     }
+  }
+  async getRecords(body: FormFields) {
+      try{
+        const response = await axios({
+          method: 'POST',
+          url: 'https://api.quickbase.com/v1/records/query',
+          headers,
+          data: body
+        });
+        return response;
+      }
+      catch(e){
+        console.log(e);
+      }    
   }
 }
 

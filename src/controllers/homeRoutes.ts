@@ -11,7 +11,17 @@ router.get('/', (req: Request, res: Response) => {
   });
 });
 
-router.put('/update', async (req: Request, res: Response) => {
+router.get('/getapp', async (req: Request, res: Response) => {
+  try{
+    const response = await APIController.getApp();
+    res.status(200).json(response.data);
+  }
+  catch(e){
+    console.log(e);
+  }
+});
+
+router.post('/update', async (req: Request, res: Response) => {
   try {
     await res.status(200).json(APIController.updateField(req.body));
     console.log('Record Inserted');
