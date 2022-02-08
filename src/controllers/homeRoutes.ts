@@ -11,10 +11,10 @@ router.get('/', (req: Request, res: Response) => {
   });
 });
 
-router.post('/update', async (req: Request, res: Response) => {
+router.put('/update', async (req: Request, res: Response) => {
   try {
     await res.status(200).json(APIController.updateField(req.body));
-    console.log('Record Inserted')
+    console.log('Record Inserted');
   } catch (e) {
     res.status(500).json({
       message: 'Error',
