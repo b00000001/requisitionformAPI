@@ -1,11 +1,3 @@
----
-id: Oww7zOZM9qjwfGGe91k3V
-title: ReqCountAPI
-desc: ''
-updated: 1644390593443
-created: 1644378143229
----
-
 ### API Routes
 
 #### **/** - Displays Generic server status.
