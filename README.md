@@ -43,7 +43,7 @@ Body
 ```
 Body
 {
-  "itemId": number,
+  "itemId": string,
   "newQty": string
 }
 ```
@@ -53,7 +53,7 @@ Body
 ```
 Body
 {
-  "itemId": number,
+  "itemId": string,
   "newQty": string
 }
 ```
@@ -63,7 +63,7 @@ Body
 ```
 Body
 {
-  "itemId": number,
+  "itemId": string,
   "newQty": string
 }
 ```
@@ -73,7 +73,7 @@ Body
 ```
 Body
 {
-  "itemId": number,
+  "itemId": string,
   "newQty": string
 }
 ```
@@ -83,7 +83,7 @@ Body
 ```
 Body
 {
-  "itemId": number,
+  "itemId": string,
   "newQty": string
 }
 ```
